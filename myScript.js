@@ -1,22 +1,67 @@
-const container = document.querySelector('.container');
+// const gridContainer = document.querySelector('.grid-container');
+// const grid = document.createElement('div');
+// const button = document.querySelector('button');
 
-const grid = document.createElement('div');
-grid.setAttribute('class', 'grid');
-container.appendChild(grid);
+// grid.setAttribute('class', 'grid');
+// gridContainer.appendChild(grid);
 
-// gridContainer.setAttribute('style', 'width: 360px; border: 2px solid blue; display: flex; flex-wrap: wrap; justify-content: center; box-sizing: border-box;');
+const button = document.querySelector('button');
 
-
-
-for (let i = 1; i <= 16; i++) {
-    for (let x = 1; x <= 16; x++) {
-        const div = document.createElement('div');
-        div.setAttribute('class', 'grid-cell');
-        div.textContent = 'x';
-        grid.appendChild(div);
+function gridCreation(numberOfSquares) {
+    const gridContainer = document.querySelector('.grid-container');
+    const grid = document.createElement('div');
+    grid.setAttribute('class', 'grid');
+    gridContainer.appendChild(grid);
+    
+for (let i = 1; i <= numberOfSquares; i++) {
+        for (let x = 1; x <= numberOfSquares; x++) {
+            const div = document.createElement('div');
+            div.setAttribute('class', 'grid-cell');
+            grid.appendChild(div);
+            
+            div.addEventListener('mouseover', (event) => {
+                event.target.style.background = 'red';
+    
+                setTimeout(() => {
+                    event.target.style.background = "";
+                }, 1000);
+            }, false);
+    
+        }
     }
 }
 
 
+gridCreation(16);
 
-// https://bluegalaxy.info/codewalk/2018/03/01/html-css-create-square-grid-using-css-grid/
+// Current problem: 
+// - the columns remain 16 whatever you input
+// - the rows become the input-3
+
+
+button.addEventListener('click', () => {
+    let nSquares = '';
+    nSquares = prompt('How many squares do you want per side?');
+    
+    if (nSquares <= 100) {
+
+        const div = document.createElement('div');
+            div.setAttribute('class', 'grid-cell');
+            grid.appendChild(div);
+
+
+        const gridRemove = document.querySelector('.grid');
+        gridCell = document.querySelectorAll('.grid-cell')
+        gridCell.forEach(element => {
+            gridRemove.removeChild(element);
+        });
+        const gridContainer = document.querySelector(".grid-container");
+        gridContainer.removeChild(gridRemove);
+        
+        gridCreation(nSquares);
+    }
+
+
+    
+});
+
