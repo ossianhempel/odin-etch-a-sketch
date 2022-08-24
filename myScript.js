@@ -11,32 +11,25 @@ function gridCreation(numberOfSquares) {
     const gridContainer = document.querySelector('.grid-container');
     const grid = document.createElement('div');
     grid.setAttribute('class', 'grid');
+    grid.setAttribute('style', `grid-template-columns: repeat(${numberOfSquares}, 1fr); grid-template-rows: repeat(${numberOfSquares} 1fr);`)
     gridContainer.appendChild(grid);
     
-for (let i = 1; i <= numberOfSquares; i++) {
-        for (let x = 1; x <= numberOfSquares; x++) {
-            const div = document.createElement('div');
-            div.setAttribute('class', 'grid-cell');
-            grid.appendChild(div);
-            
-            div.addEventListener('mouseover', (event) => {
-                event.target.style.background = 'red';
-    
-                setTimeout(() => {
-                    event.target.style.background = "";
-                }, 1000);
-            }, false);
-    
+    for (let i = 1; i <= numberOfSquares; i++) {
+            for (let x = 1; x <= numberOfSquares; x++) {
+                const div = document.createElement('div');
+                div.setAttribute('class', 'grid-cell');
+                grid.appendChild(div);
+                
+                div.addEventListener('mouseover', (event) => {
+                    event.target.style.background = 'black';
+                });
+        
+            }
         }
-    }
 }
 
 
 gridCreation(16);
-
-// Current problem: 
-// - the columns remain 16 whatever you input
-// - the rows become the input-3
 
 
 button.addEventListener('click', () => {
@@ -44,12 +37,6 @@ button.addEventListener('click', () => {
     nSquares = prompt('How many squares do you want per side?');
     
     if (nSquares <= 100) {
-
-        const div = document.createElement('div');
-            div.setAttribute('class', 'grid-cell');
-            grid.appendChild(div);
-
-
         const gridRemove = document.querySelector('.grid');
         gridCell = document.querySelectorAll('.grid-cell')
         gridCell.forEach(element => {
