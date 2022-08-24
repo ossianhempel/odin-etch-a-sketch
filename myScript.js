@@ -1,10 +1,3 @@
-// const gridContainer = document.querySelector('.grid-container');
-// const grid = document.createElement('div');
-// const button = document.querySelector('button');
-
-// grid.setAttribute('class', 'grid');
-// gridContainer.appendChild(grid);
-
 const button = document.querySelector('button');
 
 function gridCreation(numberOfSquares) {
@@ -28,9 +21,7 @@ function gridCreation(numberOfSquares) {
         }
 }
 
-
 gridCreation(16);
-
 
 button.addEventListener('click', () => {
     let nSquares = '';
@@ -47,8 +38,5 @@ button.addEventListener('click', () => {
         
         gridCreation(nSquares);
     }
-
-
-    
 });
 
